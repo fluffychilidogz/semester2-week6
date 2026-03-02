@@ -1,7 +1,8 @@
 #include <ctype.h>
 #include <stdio.h>
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   /*
       Change this code so that it takes a filename given as a command line
      argument and reads it line by line.
@@ -9,7 +10,7 @@ int main(int argc, char **argv) {
       Test it with some of the files in /txt_files.
   */
 
-  FILE *file = fopen("poem.txt", "r");
+  FILE *file = fopen(argv[1], "r");
   char buffer[100];
 
   if (file == NULL) {

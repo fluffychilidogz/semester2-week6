@@ -1,39 +1,73 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-  int speed_limit, driver_speed, fine = 0;
-  char input[20];
+int speed_limit, driver_speed, fine, excess_speed = 0;
+char input[20];
 
-  // Get user input for speed limit
+int get_limit( void )
+{
+// Get user input for speed limit
   printf("Enter the speed limit: ");
-  if (fgets(input, sizeof(input), stdin)) {
+  if (fgets(input, sizeof(input), stdin)) 
+  {
     sscanf(input, "%d", &speed_limit);
   }
+  return speed_limit;
+}
 
-  // Get user input for driver's speed
-  printf("Enter the driver's speed: ");
-  if (fgets(input, sizeof(input), stdin)) {
+int get_speed( void )
+{
+// Get user input for speed limit
+  printf("Now enter the speed driven: ");
+  if (fgets(input, sizeof(input), stdin)) 
+  {
     sscanf(input, "%d", &driver_speed);
   }
+  return driver_speed;
+}
 
-  // Determine if the driver is speeding
-  if (driver_speed > speed_limit) {
-    int excess_speed = driver_speed - speed_limit;
+int check_speed(int speed, int limit)
+{
+  if (driver_speed > speed_limit)
+  {
+    excess_speed = driver_speed - speed_limit;
+  }
+  return excess_speed;
+}
 
-    // Calculate fine based on how much over the limit
-    if (excess_speed <= 10) {
+int fine_amount(int excess_speed)
+{
+  if (excess_speed <= 10) 
+    {
       fine = 50;
-    } else if (excess_speed <= 20) {
+    }
+    else if (excess_speed <= 20) 
+    {
       fine = 100;
-    } else {
+    }
+    else 
+    {
       fine = 200;
     }
 
-    printf("Fine: $%d\n", fine);
-  } else {
-    printf("No fine needed.\n");
-  }
+    if (fine > 0)
+    {
+      printf("Fine: $%d\n", fine);
+    }
+    else 
+    {
+      printf("No fine needed.\n");
+    }
+    return 0;
+}
+
+int main( void )
+{
+
+  get_limit();
+  get_speed();
+  check_speed(driver_speed, speed_limit);
+  fine_amount(excess_speed);
 
   return 0;
 }
