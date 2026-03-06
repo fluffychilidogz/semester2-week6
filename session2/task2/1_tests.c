@@ -7,6 +7,7 @@ int is_palindrome(const char *str);
 int main(void) {
   // Use 'assert' to write some tests - does the function work?
   // consider what is and is not a palindrome!
+  assert(is_palindrome("ab") == 1);
   return 0;
 }
 
