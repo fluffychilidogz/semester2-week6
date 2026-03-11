@@ -141,13 +141,12 @@ void reverse_array(int *arr, int n) {
 double average(int *arr, int n) {
   // TODO: Implement this function
   // Hint: Be careful with integer division!
-  int sum = 0;
+  double sum = 0;
   for (int i=0;i<n;i++)
     {
       sum += arr[i];
     }
-  sum = (double)sum/n;
-  return sum; // Replace this
+  return sum/n; // Replace this
 }
 
 /**
